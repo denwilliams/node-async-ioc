@@ -1,6 +1,6 @@
 {
   "name": "async-ioc",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "IoC with async support",
   "main": "index.js",
   "scripts": {
