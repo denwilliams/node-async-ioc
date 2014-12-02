@@ -4,6 +4,7 @@
   "description": "IoC with async support",
   "main": "index.js",
   "scripts": {
+    "lint": "jshint lib",
     "test": "mocha"
   },
   "repository": {
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/denwilliams/node-async-ioc",
   "devDependencies": {
+    "jshint": "^2.5.10",
     "mocha": "^2.0.1",
     "should": "^4.3.0"
   },
