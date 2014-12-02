@@ -144,3 +144,18 @@ function myService(services) {
 ### Shutdown / Stop process
 
 TODO:
+
+## Method Summary
+
+All container methods are chainable.
+
+- debug
+- logTo
+- register
+- registerAll
+- start
+- stopOn
+- get
+- reset
+- stopTimeout
+
