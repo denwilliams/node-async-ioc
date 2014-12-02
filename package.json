@@ -1,0 +1,32 @@
+{
+  "name": "async-ioc",
+  "version": "0.0.1",
+  "description": "IoC with async support",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/git/async-ioc"
+  },
+  "keywords": [
+    "ioc",
+    "di",
+    "dip",
+    "async"
+  ],
+  "author": "Den Williams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/git/async-ioc/issues"
+  },
+  "homepage": "https://github.com/git/async-ioc",
+  "devDependencies": {
+    "mocha": "^2.0.1",
+    "should": "^4.3.0"
+  },
+  "dependencies": {
+    "q": "^1.1.2"
+  }
+}
