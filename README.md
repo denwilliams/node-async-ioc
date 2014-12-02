@@ -23,6 +23,12 @@ You can specify dependencies for a service:
 ioc.register('serviceThree', serviceThreeFactory, ['service', 'anotherService']);
 ```
 
+Load an entire folder:
+```js
+ioc.registerFolder('/path/to/services');
+```
+...all registered services will be named by the file/folder unless the $implement attribute is set.
+
 And start a service with dependency injection:
 ```js
 ioc.start('serviceThree');
