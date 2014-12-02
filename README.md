@@ -2,7 +2,57 @@
 
 Asyncronous IoC and dependency injection for Node JS.
 
-# Module Signature
+## Usage
+
+First create a container:
+
+```js
+var ioc = require('async-ioc').createContainer();
+```
+
+Then register services on that container:
+
+```js
+ioc.register('service', someFunction);
+ioc.register('anotherService', require('./anotherservice'));
+```
+
+You can specify dependencies for a service:
+
+```js
+ioc.register('serviceThree', serviceThreeFactory, ['service', 'anotherService']);
+```
+
+And start a service with dependency injection:
+```js
+ioc.start('serviceThree');
+```
+
+You can also chain the methods:
+
+```js
+var ioc = require('async-ioc').createContainer()
+	.register('service', someFunction)
+	.register('anotherService', require('./anotherservice'))
+	.register('serviceThree', serviceThreeFactory, ['service', 'anotherService'])
+	.start('serviceThree');
+```
+
+## Service Signature
+
+The factory/function for the service should have the following signature:
+
+```js
+var someService = function(services) {
+	// ...
+	// service initialization logic
+	// ...
+
+	return theService;
+};
+```
+
+Typically you would expose this in a module:
 
 ```js
 module.exports = function(services) { };
@@ -10,9 +60,9 @@ module.exports = function(services) { };
 
 ... where services is an object containing the injected services
 
-# Attributes
+## Attributes
 
-## $implement
+### $implement
 
 Defines the service or interface name this module implements.
 
@@ -24,7 +74,7 @@ module.exports.$implement = 'serviceName';
 
 ```
 
-## $inject
+### $inject
 
 Defines the services to be injected for this service. These should be supplied as an array of string values containing the service names.
 
@@ -39,9 +89,9 @@ function myService(services) {
 }
 ```
 
-# Asyncronous Services
+## Asyncronous Services
 
-## Method 1: Promises
+### Method 1: Promises
 
 Simply return a promise from the service factory.
 
@@ -60,7 +110,7 @@ function myService(services) {
 }
 ```
 
-## Method 2: start() method
+### Method 2: start() method
 
 Return an object that defines a ```.start()``` method that accepts a Node-style callback (ie: ```function(err)```) to be called on completion. The start method will be called before injecting into the first service.
 
@@ -84,3 +134,7 @@ function myService(services) {
 
 }
 ```
+
+### Shutdown / Stop process
+
+TODO:
