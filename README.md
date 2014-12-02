@@ -39,17 +39,48 @@ function myService(services) {
 }
 ```
 
-## $async
+# Asyncronous Services
 
-Defines whether this module needs to be started async.
+## Method 1: Promises
 
-*Default:* false
+Simply return a promise from the service factory.
 
 ```js
 module.exports = myService;
-module.exports.$async = true;
 
-function myService(services, done) {
-	// either return a promise or use done
+function myService(services) {
+	var deferred = Q.defer();
+
+	// this service will finish loading in 1 second
+	setTimeout(function() {
+		deferred.resolve();
+	},1000);
+
+	return deferred.promise;
+}
+```
+
+## Method 2: start() method
+
+Return an object that defines a ```.start()``` method that accepts a Node-style callback (ie: ```function(err)```) to be called on completion. The start method will be called before injecting into the first service.
+
+```js
+module.exports = myService;
+
+function myService(services) {
+
+	return {
+		start: function(done) {
+
+			// if an error occurs, call done() with the error
+			if (someErrorOccurred) done(someErrorOccurred);
+
+			// this service will finish loading in 1 second
+			setTimeout(function() {
+				done();
+			},1000);
+		}
+	};
+
 }
 ```

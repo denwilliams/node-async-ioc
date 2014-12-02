@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/git/async-ioc"
+    "url": "https://github.com/denwilliams/node-async-ioc"
   },
   "keywords": [
     "ioc",
@@ -19,9 +19,9 @@
   "author": "Den Williams",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/git/async-ioc/issues"
+    "url": "https://github.com/denwilliams/node-async-ioc/issues"
   },
-  "homepage": "https://github.com/git/async-ioc",
+  "homepage": "https://github.com/denwilliams/node-async-ioc",
   "devDependencies": {
     "mocha": "^2.0.1",
     "should": "^4.3.0"
