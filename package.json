@@ -1,7 +1,7 @@
 {
   "name": "async-ioc",
-  "version": "0.1.1",
-  "description": "IoC with async support",
+  "version": "0.2.0",
+  "description": "IoC container with async support",
   "main": "index.js",
   "scripts": {
     "lint": "jshint lib",
@@ -29,6 +29,8 @@
     "should": "^4.3.0"
   },
   "dependencies": {
+    "error-builder": "^1.0.2",
+    "jsinterface": "^1.0.0",
     "q": "^1.1.2"
   }
 }

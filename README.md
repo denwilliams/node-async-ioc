@@ -37,11 +37,14 @@ ioc.start('serviceThree');
 You can also chain the methods:
 
 ```js
-var ioc = require('async-ioc').createContainer()
+require('async-ioc').createContainer()
 	.register('service', someFunction)
 	.register('anotherService', require('./anotherservice'))
 	.register('serviceThree', serviceThreeFactory, ['service', 'anotherService'])
-	.start('serviceThree');
+	.start('serviceThree')
+	.then(function(serviceThree) {
+		// do something with serviceThree
+	});
 ```
 
 ## Service Signature
@@ -70,14 +73,28 @@ module.exports = function(services) { };
 
 ### $implement
 
+Alias of $implements
+
+### $implements
+
 Defines the service or interface name this module implements.
+
+*Type:* String or Array[String]
 
 *Default:* The file or folder name.
 
-```js
-module.exports = function(services) { };
-module.exports.$implement = 'serviceName';
+*Notes:* A module can implement multiple services or interfaces.
 
+```js
+// implement a service or interface
+module.exports = function(services) { };
+module.exports.$implements = 'serviceName';
+```
+
+```js
+// implement multiple services or interfaces
+module.exports = function(services) { };
+module.exports.$implements = ['service1', 'service2'];
 ```
 
 ### $inject
@@ -147,15 +164,17 @@ TODO:
 
 ## Method Summary
 
-All container methods are chainable.
+All container methods are chainable, except for ```get``` and ```start```.
 
 - debug
+- define
+- defineAll
+- get
 - logTo
 - register
 - registerAll
+- reset
 - start
 - stopOn
-- get
-- reset
 - stopTimeout
 

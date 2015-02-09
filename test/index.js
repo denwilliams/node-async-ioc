@@ -75,7 +75,7 @@ describe('AsyncIoC', function() {
 
   it('should chain nested async dependencies', function(done) {
     // arrange
-    var delay = 15;
+    var delay = 10;
     var start = new Date();
     var ioc = container
       .register('one', createAsyncMethod('One', delay))
@@ -104,7 +104,11 @@ describe('AsyncIoC', function() {
       .register('test', testMethod, ['fakeDependency']);
 
     // act
-    ioc.start('test').fail(handleFail);
+    try {
+      ioc.start('test').fail(handleFail);
+    } catch(err) {
+      console.error('sync error!', err.stack);
+    }
 
     // assert
     function handleFail(err) {
@@ -186,6 +190,34 @@ describe('AsyncIoC', function() {
     }
   });
 
+  describe('interfaces', function() {
+
+    it('should enforce interfaces', function(done) {
+      // arrange
+      var ioc = container
+        .define('if1', ['method1'])
+        .define({name:'if2', methods:['method2']})
+        .register(['if1', 'if2'], getInterfaceService());
+
+      // act
+      ioc.get('if1')
+        .then(function(if1) {
+          (typeof if1.method1).should.equal('function');
+          (typeof if1.method2).should.equal('undefined');
+
+          return ioc.get('if2');
+        })
+        .then(function(if2) {
+          (typeof if2.method1).should.equal('undefined');
+          (typeof if2.method2).should.equal('function');
+          done();
+        })
+        .fail(getFailHandler(done));
+
+    });
+
+  });
+
 });
 
 
@@ -237,5 +269,15 @@ function createAsyncMethod(name, delay) {
       .then(function() {
         return service;
       });
+  };
+}
+
+
+function getInterfaceService() {
+  return function() {
+    return {
+      method1: function() {},
+      method2: function() {}
+    };
   };
 }
