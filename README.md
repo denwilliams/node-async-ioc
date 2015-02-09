@@ -37,11 +37,14 @@ ioc.start('serviceThree');
 You can also chain the methods:
 
 ```js
-var ioc = require('async-ioc').createContainer()
+require('async-ioc').createContainer()
 	.register('service', someFunction)
 	.register('anotherService', require('./anotherservice'))
 	.register('serviceThree', serviceThreeFactory, ['service', 'anotherService'])
-	.start('serviceThree');
+	.start('serviceThree')
+	.then(function(serviceThree) {
+		// do something with serviceThree
+	});
 ```
 
 ## Service Signature
@@ -86,7 +89,9 @@ Defines the service or interface name this module implements.
 // implement a service or interface
 module.exports = function(services) { };
 module.exports.$implements = 'serviceName';
-// ...
+```
+
+```js
 // implement multiple services or interfaces
 module.exports = function(services) { };
 module.exports.$implements = ['service1', 'service2'];
