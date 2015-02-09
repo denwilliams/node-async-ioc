@@ -70,14 +70,26 @@ module.exports = function(services) { };
 
 ### $implement
 
+Alias of $implements
+
+### $implements
+
 Defines the service or interface name this module implements.
+
+*Type:* String or Array[String]
 
 *Default:* The file or folder name.
 
-```js
-module.exports = function(services) { };
-module.exports.$implement = 'serviceName';
+*Notes:* A module can implement multiple services or interfaces.
 
+```js
+// implement a service or interface
+module.exports = function(services) { };
+module.exports.$implements = 'serviceName';
+// ...
+// implement multiple services or interfaces
+module.exports = function(services) { };
+module.exports.$implements = ['service1', 'service2'];
 ```
 
 ### $inject
