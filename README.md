@@ -164,15 +164,17 @@ TODO:
 
 ## Method Summary
 
-All container methods are chainable.
+All container methods are chainable, except for ```get``` and ```start```.
 
 - debug
+- define
+- defineAll
+- get
 - logTo
 - register
 - registerAll
+- reset
 - start
 - stopOn
-- get
-- reset
 - stopTimeout
 
