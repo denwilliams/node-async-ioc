@@ -29,7 +29,7 @@
     "should": "^4.3.0"
   },
   "dependencies": {
-    "error-builder": "^1.0.2",
+    "error-builder": "^1.1.0",
     "jsinterface": "^1.0.0",
     "q": "^1.1.2"
   }
