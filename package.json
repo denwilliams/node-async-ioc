@@ -1,6 +1,6 @@
 {
   "name": "async-ioc",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "IoC container with async support",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "should": "^4.3.0"
   },
   "dependencies": {
-    "error-builder": "^1.0.2",
+    "error-builder": "^1.1.0",
     "jsinterface": "^1.0.0",
     "q": "^1.1.2"
   }
