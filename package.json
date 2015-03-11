@@ -1,8 +1,8 @@
 {
   "name": "async-ioc",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "IoC container with async support",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "jshint lib",
     "test": "mocha"

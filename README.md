@@ -166,13 +166,20 @@ TODO:
 
 All container methods are chainable, except for ```get``` and ```start```.
 
+
+## Still To Document
+
+A lot to do!
+
 - debug
 - define
-- defineAll
+- defineAll / defineFolder
 - get
 - logTo
+- recurseServices
+- recurseInterfaces
 - register
-- registerAll
+- registerAll / registerFolder
 - reset
 - start
 - stopOn
